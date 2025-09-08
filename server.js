@@ -76,7 +76,9 @@ function requireDB(req, res, next) {
 
 // ---------- Routes ----------
 app.get("/api/health", (_req, res) => res.json({ ok: true, db: dbState }));
-app.get("/api/votes/totals", requireDB, async (_req, res) => res.json(await getVoteTotals()));
+app.get("/api/votes/totals", requireDB, async (_req, res) => {res.json(await getVoteTotals())
+  console.log("total counts fetched")
+});
 app.get("/api/bets/totals",  requireDB, async (_req, res) => res.json(await getBetTotals()));
 
 app.get("/api/votes/recent", requireDB, async (req, res) => {
